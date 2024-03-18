@@ -1,0 +1,55 @@
+:root {
+  font-family: 'Apercu Pro Regular' !important;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    --secondary-dark: #9290c3   ;
+    --secondary-light: #535c91;
+/* 9BB0C1 00224D*/
+    --primary-light:  black; 
+    --primary-dark: white;
+}
+
+h1{
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+h2{
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+h3{
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+h4{
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+h5{
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+h6{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+p{
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--primary-light);
+}
