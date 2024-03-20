@@ -77,10 +77,7 @@ p{
   /* width: fit-content;*/
   margin: 20px auto; 
 }
-ul {
-  list-style-type: disc; /* Set the type of list marker */
-  font-size: 30px; /* Change the size of the bullet points */
-}
+
 .pubCard{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px 0px;
@@ -128,14 +125,16 @@ ul {
   border-radius: 10px;
   background-color: var(--primary-light);
 }
-.card_cust p,.card_cust h3,.card_cust h6{
-  color: white;
+.card_cust p,.card_cust h3,.card_cust h6,.edu_card p,.edu_card h3,.edu_card h6,.pubCard p,.pubCard h3,.pubCard h6,.pubCard h4,.pubCard a
+,.ExpCard p,.ExpCard h3,.ExpCard h6, .exp_desc h3, .exp_desc h5, .exp_desc p, .proj_card h3,.proj_card h4, .proj_card li, .proj_card p{
+  color: white !important;
 }
-
 .card_cust:hover{
   background-color: var(--secondary-dark);
 }
-
+.Contact_Me h3,.Contact_Me h6,.Contact_Me h2,.Contact_Me li,.Contact_Me p,.Contact_Me h1,.Contact_Me a{
+  color: white !important;
+}
 .proj_card{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px 10px;
@@ -160,10 +159,14 @@ ul {
 }
 
 .Contact_Me{
-  margin-top: 20px;
+  /* margin-top: 20px; */
   background-color: var(--secondary-light);
 }
+video{
+  width: 100vw;
+  overflow: clip;
 
+}
 .horizontal_scroll{
   overflow-x: hidden;
   overflow-y: auto;

@@ -349,7 +349,7 @@ const Home = () => {
                                 </Row>
                                 <Row style={{display:'flex',flexDirection:"row", width:'100%'}} md={3} sm={12}>
                                     <Col md={12} >
-                                        <h4 style={{textAlign:'center', fontWeight:'400'}}>Published in {item[1]} &bull; {item[2]} &bull; <a style={{color:'black', textDecoration:'underline'}} href={item[3]} target="_blank">View Paper</a> </h4>
+                                        <h4 style={{textAlign:'center', fontWeight:'400'}}>Published in {item[1]} &bull; {item[2]} &bull; <a style={{textDecoration:'underline'}} href={item[3]} target="_blank">View Paper</a> </h4>
                                     </Col>
                                     
                                 
@@ -364,21 +364,16 @@ const Home = () => {
                                 <Col md={6} sm={12} key={index}>
                                     <div className="proj_card">
                                         <h3>{item.title}</h3>
-                                        <ul style={{width:'fit-content'}}>
                                         {(item.desc).map((desc, index1)=>(
-                                            <li style={{fontSize:'18px'}} key={index1+100}>{desc}</li>
+                                            <h4 style={{fontWeight:'400'}} key={index1+100}>&bull; {desc}</h4>
                                             ))}
-                                        </ul>
 
                                         {item.skills && item.skills.length > 0 && (
                                             <div style={{ display: 'inline-block' }}>
                                                 <h3 style={{ display: 'inline', marginRight: '10px' }}>Skills:</h3>
                                                 {item.skills.map((skill, index2) => (
-                                                        <p style={{ display: 'inline' }} key={index2 + 100}>
-                                                            {index2 !=1 &&(
-                                                                <>&bull;</>
-                                                            )}
-                                                            {skill}&nbsp;</p>
+                                                        <h4 style={{ display: 'inline',fontWeight:'400' }} key={index2 + 100}>
+                                                            {index2 !== 0 && <>&bull; </>}{skill}</h4>
                                                     ))}
                                             </div>
                                         )}
@@ -389,7 +384,7 @@ const Home = () => {
                             ))}
                         </Row>
                     </div>
-                    <div className="carousal">
+                    <div style={{height:'80vh', overflow:'clip'}}>
                         {/* <Carousel activeIndex={index} onSelect={handleSelect}>
                             <Carousel.Item>
                                 <img
@@ -422,7 +417,7 @@ const Home = () => {
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel> */}
-                        <video width="640" height="360" controls>
+                        <video controls autoPlay muted>
                             <source src="assets/vid.mp4" type="video/mp4"/>
                             Your browser does not support the video tag.
                         </video>
@@ -437,15 +432,15 @@ const Home = () => {
                                     <Col md={6} sm ={12}>
                                         <p>
                                             Email<br/>
-                                            <a href="mailto:revatiborkhade@gmail.com" style={{color:"var(--primary-light)", textDecoration:'underline'}}>revatiborkhade@gmail.com</a>
+                                            <a href="mailto:revatiborkhade@gmail.com" style={{textDecoration:'underline'}}>revatiborkhade@gmail.com</a>
 
                                         </p>
 
                                         <h3 style={{width:'100%', textAlign:"left", marginTop:'5%'}}>Connect with me on</h3>
                                         <Row style={{width:'50%'}}>
                                         {/* <Col ><a style={{margin:'20% auto'}} href="https://www.facebook.com/team.acceleracers/"><img src="assets/fb_dark.svg" alt="" style={{width:'35px'}}/></a></Col> */}
-                                        <Col ><a href="https://www.instagram.com/haveyoumetreva/"><img src="assets/insta_dark.svg" alt="" style={{width:'40px'}}/></a></Col>
-                                        <Col ><a href="http://www.linkedin.com/in/revatiborkhade"><img src="assets/linkedin_dark.svg" alt="" style={{width:'40px'}}/></a></Col>
+                                        <Col ><a href="https://www.instagram.com/haveyoumetreva/"><img src="assets/insta.svg" alt="" style={{width:'40px'}}/></a></Col>
+                                        <Col ><a href="http://www.linkedin.com/in/revatiborkhade"><img src="assets/linkedin.svg" alt="" style={{width:'40px'}}/></a></Col>
                                         </Row>
                                     </Col>
                                     <Col md={6} sm ={12}>
@@ -531,7 +526,7 @@ const Home = () => {
                                 )}
                             </Col>
                         </Row>
-                        <Row>&copy; Revati Borkhade, all rights reserved</Row>
+                        <Row><p>&copy; Revati Borkhade, all rights reserved</p></Row>
                     </div>
                 </div>
             </div>
