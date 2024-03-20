@@ -77,10 +77,14 @@ p{
   /* width: fit-content;*/
   margin: 20px auto; 
 }
+ul {
+  list-style-type: disc; /* Set the type of list marker */
+  font-size: 30px; /* Change the size of the bullet points */
+}
 .pubCard{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px 0px;
-  padding: 10px;
+  padding: 30px;
   background-color: var(--secondary-light);
   border-radius: 10px;
   width: 60%;
@@ -122,7 +126,10 @@ p{
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
   border-radius: 10px;
-  background-color: var(--secondary-light);
+  background-color: var(--primary-light);
+}
+.card_cust p,.card_cust h3,.card_cust h6{
+  color: white;
 }
 
 .card_cust:hover{

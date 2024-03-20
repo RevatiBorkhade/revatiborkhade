@@ -217,7 +217,7 @@ const Home = () => {
                             <Typewriter sentences={my_profile} />
                         </div>
                         <Row>
-                            <h3  id="AboutMe">About Me</h3>
+                            <h2  id="AboutMe">About Me</h2>
                         </Row>
                         <Row>
                             <Col md={6} sm={12}>
@@ -247,7 +247,12 @@ const Home = () => {
                                         </div>
                                     </Col>
                                 </Row>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempus enim ac libero malesuada iaculis. Etiam ac enim dictum, laoreet tortor in, finibus nunc. Proin bibendum ac dolor sed viverra. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sed mauris nunc. Vivamus condimentum eget magna posuere varius. Curabitur vehicula sapien nec laoreet venenatis. Fusce lobortis leo sed purus euismod, non mattis turpis pellentesque.</p>
+                                <p>
+                                My name is Revati Borkhade, and I hold a Master of Science  degree in Engineering Management from the University of Massachusetts ad  a bachelor of Technology ,Automobile engineering from Manipal Institute of Technology. Growing up, I had a a great experience growing up on a ship in the early days , which instilled in me a profound appreciation for geography and the strategic significance of global locations. This early exposure ignited my fascination with the movement of goods, leading me down the path of supply chain management.
+<br/>Building upon this foundation, my master's degree journey transformed me into a conscientious thinker, equipped with the insights and skills necessary to navigate the complexities of the managerial field. As a supply chain and logistics analyst at Volvo Construction Equipment, I found myself at the intersection of automobiles, supply chain management, and analytics—a dynamic crossroad that ignited my enthusiasm and fueled my ambition.
+<br/>Now, armed with a wealth of experience and a burning desire to make a meaningful impact, I am poised to embark on the next chapter of my corporate journey. With a keen focus on sustainability and a relentless drive for excellence, I am ready to tackle the challenges of tomorrow head-on, shaping the future of the Logistics industry, one strategic decision at a time.
+<br/>I am equipped with extensive experience and knowledge in logistics, coupled with hands-on expertise in optimization and analytics tools. My approach to decision-making is rooted in data-driven insights, enabling me to make impactful contributions to any team I join. I look forward to connecting with you!
+                                </p>
                             </Col>
                             <Col style={{display: "flex", justifyContent:'center'}} md={6} sm={12}>
                                 <img  className="image" src="assets/AboutMe.jpeg" alt="" />
@@ -260,7 +265,7 @@ const Home = () => {
                                 <img className="image" src="assets/education.jpeg" alt="" />
                             </Col>
                             <Col md={6} sm={12}>
-                                <h3 style={{width:'100%',textAlign:'left'}}>Education</h3>
+                                <h2 style={{width:'100%',textAlign:'left'}}>Education</h2>
                                 {education.map((item, index) => (
                                     <div className="edu_card" key={index}>
                                         <Row>
@@ -287,7 +292,7 @@ const Home = () => {
                         </Row>
                     </div> 
                     <div className="topic_name Experience" id="Experience">
-                        <h3 style={{width:"100%"}}>Experience</h3>
+                        <h2 style={{width:"100%"}}>Experience</h2>
                         <Row>
                         {experience.map((item, index) => (
                             selectedJob.id !== item.id &&(
@@ -335,24 +340,25 @@ const Home = () => {
 
                     </div>
                     <div className="topic_name Publication" id="Publication">
-                        <h3>Publications</h3>
+                        <h2>Publications</h2>
                         {publications.map((item, index)=>(
                             <Row className="pubCard">
-                                <Col md={9} sm={12}>
-                                    <h3 style={{textAlign:'left'}}>{item[0]}</h3>
-                                    <h3>Published in {item[1]}</h3>
-                                </Col>
-                                <Col style={{display:'flex',flexDirection:"column"}} md={3} sm={12}>
-                                <p>
-                                    {item[2]}
-                                </p>
-                                <a style={{textAlign:'left', color:'black', textDecoration:'underline'}} href={item[3]} target="_blank">View Paper</a>
-                                </Col>
+                                <Row md={9} sm={12}>
+                                    <h3 style={{textAlign:'center', fontWeight:'400'}}>{item[0]}</h3>
+                                    
+                                </Row>
+                                <Row style={{display:'flex',flexDirection:"row", width:'100%'}} md={3} sm={12}>
+                                    <Col md={12} >
+                                        <h4 style={{textAlign:'center', fontWeight:'400'}}>Published in {item[1]} &bull; {item[2]} &bull; <a style={{color:'black', textDecoration:'underline'}} href={item[3]} target="_blank">View Paper</a> </h4>
+                                    </Col>
+                                    
+                                
+                                </Row>
                             </Row>
                         ))}
                     </div>
                     <div className="topic_name Projects" id="Projects">
-                        <h3>Projects</h3>
+                        <h2>Projects</h2>
                         <Row>
                             {projects.map((item, index)=>(
                                 <Col md={6} sm={12} key={index}>
@@ -360,7 +366,7 @@ const Home = () => {
                                         <h3>{item.title}</h3>
                                         <ul style={{width:'fit-content'}}>
                                         {(item.desc).map((desc, index1)=>(
-                                            <li key={index1+100}>{desc}</li>
+                                            <li style={{fontSize:'18px'}} key={index1+100}>{desc}</li>
                                             ))}
                                         </ul>
 
@@ -368,7 +374,11 @@ const Home = () => {
                                             <div style={{ display: 'inline-block' }}>
                                                 <h3 style={{ display: 'inline', marginRight: '10px' }}>Skills:</h3>
                                                 {item.skills.map((skill, index2) => (
-                                                        <p style={{ display: 'inline' }} key={index2 + 100}>&bull;{skill}&nbsp;</p>
+                                                        <p style={{ display: 'inline' }} key={index2 + 100}>
+                                                            {index2 !=1 &&(
+                                                                <>&bull;</>
+                                                            )}
+                                                            {skill}&nbsp;</p>
                                                     ))}
                                             </div>
                                         )}
@@ -380,7 +390,7 @@ const Home = () => {
                         </Row>
                     </div>
                     <div className="carousal">
-                        <Carousel activeIndex={index} onSelect={handleSelect}>
+                        {/* <Carousel activeIndex={index} onSelect={handleSelect}>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
@@ -411,10 +421,14 @@ const Home = () => {
                                     <h3>Third slide label</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
-                        </Carousel>
+                        </Carousel> */}
+                        <video width="640" height="360" controls>
+                            <source src="assets/vid.mp4" type="video/mp4"/>
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                     <div className="topic_name Contact_Me" id="Contact_Me">
-                        <h3>Contact Me</h3>
+                        <h2>Contact Me</h2>
                         <Row>
                             <Col md={6}>
                                 <Row style={{flexDirection:'column'}}>
