@@ -17,8 +17,12 @@
 }
 .AboutMe p{
   margin: 0;
+  text-align: left;
 }
 
+.pd-10-40{
+  padding: 10px 40px !important;
+}
 .AboutMe .row{
   width: 100%;
   text-align: left;
@@ -105,6 +109,7 @@ p{
   border-radius: 20px;
   transition: 250ms ease;
   height:150px;
+  cursor: pointer;
 }
 .ExpCard.selected_now{
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.5) 0px 6px 20px 0px;
@@ -129,9 +134,9 @@ p{
 ,.ExpCard p,.ExpCard h3,.ExpCard h6, .exp_desc h3, .exp_desc h5, .exp_desc p, .proj_card h3,.proj_card h4, .proj_card li, .proj_card p{
   color: white !important;
 }
-.card_cust:hover{
+/* .card_cust:hover{
   background-color: var(--secondary-dark);
-}
+} */
 .Contact_Me h3,.Contact_Me h6,.Contact_Me h2,.Contact_Me li,.Contact_Me p,.Contact_Me h1,.Contact_Me a{
   color: white !important;
 }
@@ -167,6 +172,26 @@ video{
   overflow: clip;
 
 }
+
+.my_exp_card{
+  width: 100%;
+  height: 110px;
+  background-color: var(--secondary-light);
+  padding: 20px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.my_exp_card:hover,.card_cust:hover,.pubCard:hover, .edu_card:hover, .ExpCard:hover, .proj_card:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.6) 0px 6px 20px 0px;
+}
+
+.my_exp_card p{
+  color: white;
+  text-align: center;
+}
 .horizontal_scroll{
   overflow-x: hidden;
   overflow-y: auto;
@@ -174,9 +199,41 @@ video{
   scrollbar-width: thin; /* Set the width of the scrollbar */
   scrollbar-color: var(--primary-dark) var(--primary-light);
 }
+.video_player{
+  height:80vh;
+  overflow:clip;
+  display:flex;
+  align-items:center;
+}
+.buttons_3 {
+  margin-top: 50px !important;
+}
+.life_modal{
+  width: 60vw;
+  height: fit-content;
+  background-color: black;
+  position: relative;
+  padding: 35px;
+  border-radius: 40px;
+  /* border: 50px solid white; */
+}
 
+.life_modal h1{
+  color: white;
+}
+.life_modal h4{
+  color: white;
+  font-weight: 400;
+}
 @media only screen and (max-width: 768px) {
   /* Styles for mobile devices */
+  .video_player{
+    width:100vw;
+    height: fit-content;
+    overflow:clip;
+    display:flex;
+    align-items:center;
+  }
   .image{
     width: 100%;
   }

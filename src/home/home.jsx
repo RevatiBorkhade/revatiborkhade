@@ -15,6 +15,7 @@ const Home = () => {
     const [selectedJob, setSelectedJob] = useState([]);
     const [mailSent, setmailSent] = useState(false)
     const [exp, setexp] = useState("")
+    const [selectedModal, setSelectedmodal] = useState(null)
     const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -64,7 +65,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycby9Tec1ujI2yJOtbk6RDoiUrxuJExkSbKG6TJWRuPchM-E4dEbFKWMyI45RUCa7cf8/exec');
+            const response = await fetch('https://script.google.com/macros/s/AKfycbwDQoiGCMUDc-SLVHa15BdR696I9CGhfmJ-ntjiAogRX7XpmhHjtVA51hnN1QvKBorX/exec');
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -88,7 +89,8 @@ const Home = () => {
                     return {
                         title: item[0],
                         desc: item[1] && item[1].trim() ? JSON.parse(item[1]) : [],
-                        skills: item[2] && item[2].trim() ? JSON.parse(item[2]) : []
+                        skills: item[2] && item[2].trim() ? JSON.parse(item[2]) : [],
+                        link: item[3]
                     };
                 });
                 var projects = processedData
@@ -191,7 +193,6 @@ const Home = () => {
           setmailSent(true)
         // You can perform any further action like submitting data to backend etc.
     };
-
     while(!isloaded){
         return(
             <Preloader/>
@@ -250,12 +251,37 @@ const Home = () => {
                                 <p>
                                 My name is Revati Borkhade, and I hold a Master of Science  degree in Engineering Management from the University of Massachusetts ad  a bachelor of Technology ,Automobile engineering from Manipal Institute of Technology. Growing up, I had a a great experience growing up on a ship in the early days , which instilled in me a profound appreciation for geography and the strategic significance of global locations. This early exposure ignited my fascination with the movement of goods, leading me down the path of supply chain management.
 <br/>Building upon this foundation, my master's degree journey transformed me into a conscientious thinker, equipped with the insights and skills necessary to navigate the complexities of the managerial field. As a supply chain and logistics analyst at Volvo Construction Equipment, I found myself at the intersection of automobiles, supply chain management, and analytics—a dynamic crossroad that ignited my enthusiasm and fueled my ambition.
-<br/>Now, armed with a wealth of experience and a burning desire to make a meaningful impact, I am poised to embark on the next chapter of my corporate journey. With a keen focus on sustainability and a relentless drive for excellence, I am ready to tackle the challenges of tomorrow head-on, shaping the future of the Logistics industry, one strategic decision at a time.
-<br/>I am equipped with extensive experience and knowledge in logistics, coupled with hands-on expertise in optimization and analytics tools. My approach to decision-making is rooted in data-driven insights, enabling me to make impactful contributions to any team I join. I look forward to connecting with you!
+<br/>Experience and Integrity combined with confidence builds a character. Being a firm believer of Team work I excel in the projects with great synergy and data-driven decision making.
+<br/>With a keen focus on sustainability and a relentless drive for excellence, I am ready to tackle the challenges of tomorrow head-on, shaping the future of Supply chain , one strategic decision at a time.
                                 </p>
                             </Col>
-                            <Col style={{display: "flex", justifyContent:'center'}} md={6} sm={12}>
-                                <img  className="image" src="assets/AboutMe.jpeg" alt="" />
+                            <Col style={{display: "flex", justifyContent:'center', flexDirection:'column', alignItems:'center'}} md={6} sm={12}>
+                                <img  className="image" src="https://firebasestorage.googleapis.com/v0/b/website-media-f80a7.appspot.com/o/AboutMe.jpeg?alt=media&token=907c9d8a-4f1d-4384-9b39-4bd7723183d1" alt="" />
+                                <div className="buttons_3">
+                                <Row>
+                                    <Row style={{width:'100%',textAlign:'center'}}>
+                                        <h4 style={{width:'100%', textAlign:'center'}}>Know more about my leadership experiences.</h4>
+                                    </Row>
+                                    <Row>
+                                        <Col style={{display: "flex", justifyContent:'center', alignItems:'center'}}>
+                                            <div onClick={(e)=>{setSelectedmodal('FS')}} className="my_exp_card">
+                                                <p>TMR : Baja India </p>
+                                            </div>
+                                        </Col>
+                                        <Col style={{display: "flex", justifyContent:'center', alignItems:'center'}}>
+                                            <div  onClick={(e)=>{setSelectedmodal('UN')}} className="my_exp_card">
+                                                <p>AIESEC UN SDG at Bahrain</p>
+                                            </div>
+                                        </Col>
+                                        <Col style={{display: "flex", justifyContent:'center', alignItems:'center'}}>
+                                            <div  onClick={(e)=>{setSelectedmodal("HPAIR")}} className="my_exp_card">
+                                                <p>HPAIR 2021</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Row>
+                                </div>
+                                
                             </Col>
                         </Row>
                     </div>
@@ -310,17 +336,12 @@ const Home = () => {
                             ))}
                         </Row>
                         <Row className="exp_desc">
-                                    <Row>
-                                        <Col md={6}><img src={selectedJob.logo} style={{width:'100px'}} alt="" /></Col>
-                                        <Col  md={6} style={{width:'fit-content'}}>
-                                            <h3 style={{textAlign:'left',textWrap: 'nowrap'}}>{selectedJob.position}</h3>
-                                            <h5 style={{textAlign:'left', textWrap: 'nowrap'}}>{selectedJob.company}</h5>
-                                        </Col>
-                                    </Row>
                                 
                                 
                                 <Row style={{flexDirection:'row', width:'80%'}}>
                                     <Row style={{width:'100%', flexDirection:'column'}}>
+                                        <h3 style={{textAlign:'left',textWrap: 'nowrap'}}>{selectedJob.position},{selectedJob.company} </h3>
+                                        {/* <img src={selectedJob.logo} style={{width:'100px', float:'right'}} alt="" /> */}
                                         <h3 style={{width:'100%', textAlign:'left'}} >Impact</h3>
                                         {selectedJob.JobDesc.map((item,index)=>(
                                                     <p key={item.id} style={{textAlign:'left'}}>&bull;{item}</p>
@@ -375,6 +396,9 @@ const Home = () => {
                                                         <h4 style={{ display: 'inline',fontWeight:'400' }} key={index2 + 100}>
                                                             {index2 !== 0 && <>&bull; </>}{skill}</h4>
                                                     ))}
+                                                <h3 style={{marginRight: '10px',marginTop:'20px', textDecoration:'underline', cursor:'pointer'}}>
+                                                    <a style={{color:'white'}} target="_blank" href={item.link}>View Project</a>
+                                                </h3>
                                             </div>
                                         )}
                                         
@@ -384,7 +408,7 @@ const Home = () => {
                             ))}
                         </Row>
                     </div>
-                    <div style={{height:'80vh', overflow:'clip'}}>
+                    <div className="video_player" >
                         {/* <Carousel activeIndex={index} onSelect={handleSelect}>
                             <Carousel.Item>
                                 <img
@@ -528,6 +552,48 @@ const Home = () => {
                         </Row>
                         <Row><p>&copy; Revati Borkhade, all rights reserved</p></Row>
                     </div>
+                    {selectedModal &&(
+                        <div style={{width:'100vw', height:'100vh', position:'fixed', top:'5vh', right:'0', display:'flex', alignItems:'center', justifyContent:'center'}}>
+                            <div className="life_modal">
+                                <a style={{position:'absolute', top:'20px', right:'20px', color:'white', cursor:'pointer'}} onClick={(e)=>{setSelectedmodal(null)}}>X</a>
+                                <Row>
+                                    {selectedModal === "FS"&&(<h1>TMR : Baja India </h1>)}
+                                    {selectedModal === "UN"&&(<h1>AIESEC UN SDG at Bahrain</h1>)}
+                                    {selectedModal === "HPAIR"&&(<h1>HPAIR 2021</h1>)}
+                                    
+                                </Row>
+                                <Row>
+                                    {selectedModal === "FS"&&(
+                                    <Row>
+                                        <Col>
+                                            <img style={{width:'100%'}} src="assets/Baja.jpg" alt="" />
+                                        </Col>
+                                        <Col>
+                                            <p style={{color:'white'}}>I had an opportunity to work with one of the premium student run ATV teams in India , Team Manipal racing where I contributed my skills to build scalable business models to win podiums for the team!</p>
+                                        </Col>
+                                    </Row>
+                                    )}
+                                    {selectedModal === "UN"&&(
+                                    <Row>
+                                        <Col><img style={{width:'100%'}} src="assets/UN.jpg" alt="" /></Col>
+                                        <Col>
+                                        <p style={{color:'white'}}>I had an opportunity representing MIT manipal at Unleash Bahrain 2030 for United Nations Sustainable Develeopment Goal</p>
+                                        </Col>
+                                    </Row>
+                                    )}
+                                    {selectedModal === "HPAIR"&&(
+                                    <Row>
+                                        <Col><img style={{width:'100%'}} src="assets/hpair.jpeg" alt="" /></Col>
+                                        <Col>
+                                        <p style={{color:'white'}}>I was selected as a delegate for Harvard Peoject for Asian and International Relations for discussion of economic, political nd social issues !</p>
+                                        </Col>
+                                    </Row>
+                                    )}
+                                </Row>
+                            </div>
+                        </div>
+                    )}
+                    
                 </div>
             </div>
         </div>
