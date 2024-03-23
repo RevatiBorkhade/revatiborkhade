@@ -13,6 +13,8 @@ const Home = () => {
     const [education, seteducatione] = useState([]);
     const [publications, setpublications] = useState([]);
     const [selectedJob, setSelectedJob] = useState([]);
+    const [about_me_description, setabout_me_description] = useState([]);
+    const [images, setImages] =useState([])
     const [mailSent, setmailSent] = useState(false)
     const [exp, setexp] = useState("")
     const [selectedModal, setSelectedmodal] = useState(null)
@@ -65,7 +67,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbwDQoiGCMUDc-SLVHa15BdR696I9CGhfmJ-ntjiAogRX7XpmhHjtVA51hnN1QvKBorX/exec');
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxqYrDLOHjH9TDR9TqXnedMoKKl71pEP9gj6pFdpHnwTOUoNiWKt_snMmHGBeenvvP7/exec');
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -144,8 +146,28 @@ const Home = () => {
             } catch (error) {
                 publications =[]
             }
-            
-
+            try {
+                var About_me_description = JSON.parse(responseData["About me description"]);
+                var About_me_description = About_me_description.filter(function(item) {
+                    return item.some(function(value) {
+                        return value !== '';
+                    });
+                });
+            } catch (error) {
+                About_me_description =[]
+            }
+            try {
+                var images = JSON.parse(responseData["images"]);
+                var images = images.filter(function(item) {
+                    return item.some(function(value) {
+                        return value !== '';
+                    });
+                });
+            } catch (error) {
+                images =[]
+            }
+            setImages(images);            
+            setabout_me_description(About_me_description);
             setmy_profile(myprofile);
             setprojects(projects);
             setexperience(experience);
@@ -248,15 +270,12 @@ const Home = () => {
                                         </div>
                                     </Col>
                                 </Row>
-                                <p>
-                                My name is Revati Borkhade, and I hold a Master of Science  degree in Engineering Management from the University of Massachusetts ad  a bachelor of Technology ,Automobile engineering from Manipal Institute of Technology. Growing up, I had a a great experience growing up on a ship in the early days , which instilled in me a profound appreciation for geography and the strategic significance of global locations. This early exposure ignited my fascination with the movement of goods, leading me down the path of supply chain management.
-<br/>Building upon this foundation, my master's degree journey transformed me into a conscientious thinker, equipped with the insights and skills necessary to navigate the complexities of the managerial field. As a supply chain and logistics analyst at Volvo Construction Equipment, I found myself at the intersection of automobiles, supply chain management, and analytics—a dynamic crossroad that ignited my enthusiasm and fueled my ambition.
-<br/>Experience and Integrity combined with confidence builds a character. Being a firm believer of Team work I excel in the projects with great synergy and data-driven decision making.
-<br/>With a keen focus on sustainability and a relentless drive for excellence, I am ready to tackle the challenges of tomorrow head-on, shaping the future of Supply chain , one strategic decision at a time.
-                                </p>
+                                {about_me_description.map((item, index)=>(
+                                <p key={index}>{item}</p>
+                                ))}
                             </Col>
                             <Col style={{display: "flex", justifyContent:'center', flexDirection:'column', alignItems:'center'}} md={6} sm={12}>
-                                <img  className="image" src="https://firebasestorage.googleapis.com/v0/b/website-media-f80a7.appspot.com/o/AboutMe.jpeg?alt=media&token=907c9d8a-4f1d-4384-9b39-4bd7723183d1" alt="" />
+                                <img  className="image" src={images[0]} alt="" />
                                 <div className="buttons_3">
                                 <Row>
                                     <Row style={{width:'100%',textAlign:'center'}}>
@@ -288,7 +307,7 @@ const Home = () => {
                      <div className="topic_name Education" id="Education">
                         <Row>
                             <Col md={6} sm={12}>
-                                <img className="image" src="assets/education.jpeg" alt="" />
+                                <img className="image" src={images[1]} alt="" />
                             </Col>
                             <Col md={6} sm={12}>
                                 <h2 style={{width:'100%',textAlign:'left'}}>Education</h2>
@@ -409,40 +428,8 @@ const Home = () => {
                         </Row>
                     </div>
                     <div className="video_player" >
-                        {/* <Carousel activeIndex={index} onSelect={handleSelect}>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400?text=First+Slide"
-                                    alt="First slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>First slide label</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400?text=First+Slide"
-                                    alt="First slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>Second slide label</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="https://via.placeholder.com/800x400?text=First+Slide"
-                                    alt="First slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>Third slide label</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                        </Carousel> */}
                         <video controls autoPlay muted>
-                            <source src="assets/vid.mp4" type="video/mp4"/>
+                            <source src={images[2]} type="video/mp4"/>
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -601,3 +588,47 @@ const Home = () => {
 };
 
 export default Home;
+
+function doGet() {
+    // Get the spreadsheet.
+    var ss = SpreadsheetApp.openById("1hDzsPdyrnsZA8UtYz0LWoFPmZwReExVnD2eDwYf5NtE");
+  
+    // Get the sheet.
+    var sheet = ss.getSheetByName("Sheet1");
+    // Get the range of data.
+    var range = "";
+    var params = ["my_profile","experience","education","publications","projects","images"];
+    var output = {};
+    for (var i in params) {
+      var item = params[i];
+      // Determine the range based on the parameter.
+      if (item === "my_profile") {
+        range = "A3:A20";
+      } else if (item === "experience") {
+        range = "B3:H20";
+      } else if (item === "education") {
+        range = "I3:N20";
+      } else if (item === "publications") {
+        range = "O3:R20";
+      } else if (item === "projects") {
+        range = "S3:V20";
+      } else if (item === "images") {
+        range = "W3:W20";
+      }
+  
+  
+  
+      var data_range = sheet.getRange(range);
+  
+      // Get the values of the cells.
+      var values = data_range.getValues();
+      if (item === "mypage") {
+        values = values.flat(); // Requires ES6 support
+      }
+      var textOutput = JSON.stringify(values);
+      output[item] = textOutput;
+    }
+  
+    // Return the values.
+    return ContentService.createTextOutput(JSON.stringify(output)).setMimeType(ContentService.MimeType.TEXT);
+  }
