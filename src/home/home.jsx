@@ -565,26 +565,26 @@ const Home = () => {
                                 <Row>
                                     {selectedModal === "FS"&&(
                                     <Row>
-                                        <Col>
+                                        <Col md={6} xs={12}>
                                             <img style={{width:'100%'}} src="assets/Baja.jpg" alt="" />
                                         </Col>
-                                        <Col>
+                                        <Col md={6} xs={12}>
                                             <p style={{color:'white'}}>I had an opportunity to work with one of the premium student run ATV teams in India , Team Manipal racing where I contributed my skills to build scalable business models to win podiums for the team!</p>
                                         </Col>
                                     </Row>
                                     )}
                                     {selectedModal === "UN"&&(
                                     <Row>
-                                        <Col><img style={{width:'100%'}} src="assets/UN.jpg" alt="" /></Col>
-                                        <Col>
+                                        <Col md={6} xs={12}><img style={{width:'100%'}} src="assets/UN.jpg" alt="" /></Col>
+                                        <Col md={6} xs={12}>
                                         <p style={{color:'white'}}>I had an opportunity representing MIT manipal at Unleash Bahrain 2030 for United Nations Sustainable Develeopment Goal</p>
                                         </Col>
                                     </Row>
                                     )}
                                     {selectedModal === "HPAIR"&&(
                                     <Row>
-                                        <Col><img style={{width:'100%'}} src="assets/hpair.jpeg" alt="" /></Col>
-                                        <Col>
+                                        <Col md={6} xs={12}><img style={{width:'100%'}} src="assets/hpair.jpeg" alt="" /></Col>
+                                        <Col md={6} xs={12}>
                                         <p style={{color:'white'}}>I was selected as a delegate for Harvard Peoject for Asian and International Relations for discussion of economic, political nd social issues !</p>
                                         </Col>
                                     </Row>
