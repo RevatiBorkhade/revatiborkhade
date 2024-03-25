@@ -355,8 +355,6 @@ const Home = () => {
                             ))}
                         </Row>
                         <Row className="exp_desc">
-                                
-                                
                                 <Row style={{flexDirection:'row', width:'80%'}}>
                                     <Row style={{width:'100%', flexDirection:'column'}}>
                                         <h3 style={{textAlign:'left',textWrap: 'nowrap'}}>{selectedJob.position},{selectedJob.company} </h3>
@@ -474,7 +472,7 @@ const Home = () => {
                                         <Row>
                                             <Col md={6} sm={12}>
                                             <Form.Group controlId="formName">
-                                                    <Form.Label style={{color:'var(--primary-light)', width:'100%', textAlign:"left"}}>Name:</Form.Label>
+                                                    <Form.Label style={{color:'white', width:'100%', textAlign:"left"}}>Name:</Form.Label>
                                                     <Form.Control
                                                     type="text"
                                                     placeholder="Enter your name"
@@ -487,7 +485,7 @@ const Home = () => {
                                                 </Col>
                                             <Col md={6} sm={12}>
                                             <Form.Group controlId="formEmail">
-                                                <Form.Label style={{color:'var(--primary-light)', width:'100%', textAlign:"left"}}>Email:</Form.Label>
+                                                <Form.Label style={{color:'white', width:'100%', textAlign:"left"}}>Email:</Form.Label>
                                                 <Form.Control
                                                 type="email"
                                                 placeholder="Enter your email"
@@ -503,7 +501,7 @@ const Home = () => {
                                 
 
                                     <Form.Group controlId="formSubject">
-                                        <Form.Label style={{color:'var(--primary-light)', width:'100%', textAlign:"left"}}>Subject:</Form.Label>
+                                        <Form.Label style={{color:'white', width:'100%', textAlign:"left"}}>Subject:</Form.Label>
                                         <Form.Control
                                         type="text"
                                         placeholder="Enter subject"
@@ -515,7 +513,7 @@ const Home = () => {
                                     </Form.Group>
 
                                     <Form.Group controlId="formMessage">
-                                        <Form.Label style={{color:'var(--primary-light)', width:'100%', textAlign:"left"}}>Message:</Form.Label>
+                                        <Form.Label style={{color:'white', width:'100%', textAlign:"left"}}>Message:</Form.Label>
                                         <Form.Control
                                         as="textarea"
                                         rows={3}
@@ -540,7 +538,7 @@ const Home = () => {
                         <Row><p>&copy; Revati Borkhade, all rights reserved</p></Row>
                     </div>
                     {selectedModal &&(
-                        <div style={{width:'100vw', height:'100vh', position:'fixed', top:'5vh', right:'0', display:'flex', alignItems:'center', justifyContent:'center'}}>
+                        <div className="life_modal_container" style={{width:'100vw', height:'100vh', position:'fixed', top:'5vh', right:'0', display:'flex', alignItems:'center', justifyContent:'center'}}>
                             <div className="life_modal">
                                 <a style={{position:'absolute', top:'20px', right:'20px', color:'white', cursor:'pointer'}} onClick={(e)=>{setSelectedmodal(null)}}>X</a>
                                 <Row>
@@ -553,7 +551,7 @@ const Home = () => {
                                     {selectedModal === "FS"&&(
                                     <Row>
                                         <Col md={6} xs={12}>
-                                            <img style={{width:'100%'}} src="assets/Baja.jpg" alt="" />
+                                            <img style={{width:'100%'}} src={images[3]} alt="" />
                                         </Col>
                                         <Col md={6} xs={12}>
                                             <p style={{color:'white'}}>I had an opportunity to work with one of the premium student run ATV teams in India , Team Manipal racing where I contributed my skills to build scalable business models to win podiums for the team!</p>
@@ -562,7 +560,7 @@ const Home = () => {
                                     )}
                                     {selectedModal === "UN"&&(
                                     <Row>
-                                        <Col md={6} xs={12}><img style={{width:'100%'}} src="assets/UN.jpg" alt="" /></Col>
+                                        <Col md={6} xs={12}><img style={{width:'100%'}} src={images[5]} alt="" /></Col>
                                         <Col md={6} xs={12}>
                                         <p style={{color:'white'}}>I had an opportunity representing MIT manipal at Unleash Bahrain 2030 for United Nations Sustainable Develeopment Goal</p>
                                         </Col>
@@ -570,7 +568,7 @@ const Home = () => {
                                     )}
                                     {selectedModal === "HPAIR"&&(
                                     <Row>
-                                        <Col md={6} xs={12}><img style={{width:'100%'}} src="assets/hpair.jpeg" alt="" /></Col>
+                                        <Col md={6} xs={12}><img style={{width:'100%'}} src={images[4]} alt="" /></Col>
                                         <Col md={6} xs={12}>
                                         <p style={{color:'white'}}>I was selected as a delegate for Harvard Peoject for Asian and International Relations for discussion of economic, political nd social issues !</p>
                                         </Col>
@@ -588,47 +586,3 @@ const Home = () => {
 };
 
 export default Home;
-
-function doGet() {
-    // Get the spreadsheet.
-    var ss = SpreadsheetApp.openById("1hDzsPdyrnsZA8UtYz0LWoFPmZwReExVnD2eDwYf5NtE");
-  
-    // Get the sheet.
-    var sheet = ss.getSheetByName("Sheet1");
-    // Get the range of data.
-    var range = "";
-    var params = ["my_profile","experience","education","publications","projects","images"];
-    var output = {};
-    for (var i in params) {
-      var item = params[i];
-      // Determine the range based on the parameter.
-      if (item === "my_profile") {
-        range = "A3:A20";
-      } else if (item === "experience") {
-        range = "B3:H20";
-      } else if (item === "education") {
-        range = "I3:N20";
-      } else if (item === "publications") {
-        range = "O3:R20";
-      } else if (item === "projects") {
-        range = "S3:V20";
-      } else if (item === "images") {
-        range = "W3:W20";
-      }
-  
-  
-  
-      var data_range = sheet.getRange(range);
-  
-      // Get the values of the cells.
-      var values = data_range.getValues();
-      if (item === "mypage") {
-        values = values.flat(); // Requires ES6 support
-      }
-      var textOutput = JSON.stringify(values);
-      output[item] = textOutput;
-    }
-  
-    // Return the values.
-    return ContentService.createTextOutput(JSON.stringify(output)).setMimeType(ContentService.MimeType.TEXT);
-  }
