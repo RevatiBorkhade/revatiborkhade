@@ -275,7 +275,14 @@ video{
   border-radius: 40px;
   /* border: 50px solid white; */
 }
-
+.topic_name{
+  width: 100vw;
+  padding: 20px;
+  text-align: center;
+}
+.Contact_Me .row{
+  margin: 0;
+}
 }
 
 .scrollable::-webkit-scrollbar {
