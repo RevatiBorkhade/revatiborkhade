@@ -566,7 +566,7 @@ const Home = () => {
                                     <Row>
                                         <Col md={6} xs={12}><img style={{width:'100%'}} src={images[4]} alt="" /></Col>
                                         <Col md={6} xs={12}>
-                                        <p style={{color:'white'}}>I was selected as a delegate for Harvard Peoject for Asian and International Relations for discussion of economic, political nd social issues !</p>
+                                        <p style={{color:'white'}}>I was selected as a delegate for Harvard Project for Asian and International Relations for discussion of economic, political and social issues !</p>
                                         </Col>
                                     </Row>
                                     )}
