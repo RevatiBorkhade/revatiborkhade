@@ -236,6 +236,7 @@ video{
   }
   .image{
     width: 100%;
+    height: auto;
   }
   .pubCard{
     width: 100%;

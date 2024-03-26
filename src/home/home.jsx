@@ -405,7 +405,6 @@ const Home = () => {
                                         {(item.desc).map((desc, index1)=>(
                                             <h4 style={{fontWeight:'400'}} key={index1+100}>&bull; {desc}</h4>
                                             ))}
-
                                         {item.skills && item.skills.length > 0 && (
                                             <div style={{ display: 'inline-block' }}>
                                                 <h3 style={{ display: 'inline', marginRight: '10px' }}>Skills:</h3>
@@ -418,10 +417,8 @@ const Home = () => {
                                                 </h3>
                                             </div>
                                         )}
-                                        
                                     </div>
                                 </Col>
-                                
                             ))}
                         </Row>
                     </div>
@@ -524,7 +521,6 @@ const Home = () => {
                                         onChange={handleChange}
                                         />
                                     </Form.Group>
-
                                     <Button style={{marginTop:'10px'}} variant="primary" type="submit">
                                         Submit
                                     </Button>
