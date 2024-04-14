@@ -26,11 +26,10 @@ const NavigationBar = () => {
           <Nav.Link as={Link} to="#Projects">Projects</Nav.Link>
           <Nav.Link as={Link} to="#Contact_Me">Contact Me</Nav.Link> */}
         </Nav>
-        <Nav className='ext_links'>
-          {/* <Nav.Link className='mob' as={Link} to="https://www.facebook.com/team.acceleracers/"><img src="assets/fb.svg" alt="" style={{width:'35px'}}/></Nav.Link> */}
+        <div className='ext_links'>
           <Nav.Link className='mob' as={Link} to="https://www.instagram.com/haveyoumetreva/"><img src="assets/insta.svg" alt="" style={{width:'40px'}}/></Nav.Link>
           <Nav.Link className='mob' as={Link} to="http://www.linkedin.com/in/revatiborkhade"><img src="assets/linkedin.svg" alt="" style={{width:'40px'}}/></Nav.Link>
-        </Nav>
+        </div>
       </Navbar.Collapse>
     </Navbar>
   );

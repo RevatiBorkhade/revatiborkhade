@@ -20,6 +20,7 @@
   padding: 0px 10px !important;
 }
 .ext_links{
+    display: flex;
     flex-direction:row-reverse !important;
     width: fit-content !important;
     position: absolute;
@@ -33,6 +34,7 @@
     width: 100%;
   }
   .ext_links{
+    display: flex;
     flex-direction:row;
     justify-content: center;
     align-items: center;
