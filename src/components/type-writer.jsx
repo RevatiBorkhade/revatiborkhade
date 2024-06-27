@@ -4,8 +4,8 @@ const Typewriter = ({ sentences }) => {
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(150); // Adjust typing speed as needed
-  const [waitTime, setWaitTime] = useState(1000); // Adjust wait time as needed
+  const [typingSpeed, setTypingSpeed] = useState(100); // Adjust typing speed as needed
+  const [waitTime, setWaitTime] = useState(800); // Adjust wait time as needed
   const [isWaiting, setIsWaiting] = useState(false);
 
   useEffect(() => {
